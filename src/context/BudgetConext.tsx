@@ -3,6 +3,7 @@ import { BudgetActions, BudgetState, budgetReducer, initialState } from "../redu
 type BudgetContextProps = {
     state: BudgetState
     dispatch: Dispatch<BudgetActions>
+    helloworld: () => void 
 }
 type BudgetProviderProps = {
     children: ReactNode
@@ -11,11 +12,16 @@ export const BudgetContext = createContext<BudgetContextProps>(null!)
 export const BudgetProvider = ({children} : BudgetProviderProps) => {
 
     const [state, dispatch ] = useReducer(budgetReducer, initialState)
+    const helloWorld = () => {
+        console.log("helloworld")
+    }
+
     return (
         <BudgetContext.Provider
             value={{
                 state,
-                dispatch
+                dispatch,
+                helloworld: helloWorld
             }}
         >
             {children}
