@@ -3,7 +3,7 @@ import BudgetForm from "./Components/BudgetForm"
 import { useBudget } from "./hooks/useBudget"
 import BudgetTracker from "./Components/BudgetTracker"
 import ExpenseModal from "./Components/ExpenseModal"
-
+import ExpenseList from "./Components/ExpenseList"
 function App() {
  const {state} = useBudget()
  const isValidBudget =  useMemo(() =>state.budget > 0, [state.budget])
@@ -17,6 +17,7 @@ function App() {
       </div>
       {isValidBudget && (
         <main className="max-x-3xl mx-auto py-10">
+         <ExpenseList/> 
           <ExpenseModal/>
         </main>
       )}
